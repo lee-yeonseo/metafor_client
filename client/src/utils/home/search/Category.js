@@ -36,8 +36,7 @@ const PageWrapper = styled.div`
   align-items: flex-start;
   height: 100vh;
   width: 100vw;
-  background-color: #f0f0f0;
-  padding-top: 250px;
+  margin-top: 180px;
 `;
 
 const Container = styled.div`
