@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
-export default function SignInput({ title, content }) {
+export default function SignInput({ title, content, margin }) {
   return (
-    <Container>
+    <Container style={{ marginBottom: margin }}>
       <Title>{title}</Title>
       <Input placeholder={content} />
     </Container>

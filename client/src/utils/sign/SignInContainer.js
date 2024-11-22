@@ -1,19 +1,27 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import SignInput from "./utils/SignInput";
+import SignButton from "./utils/SignButton";
 
 export default function SignInContainer() {
   const router = useRouter();
 
-  const onClickNext = () => {
-    router.push("/sign/sign-up");
-  };
   return (
-    <>
-      <NextButton onClick={onClickNext}>sign in</NextButton>
-      <SignInput title="id" content="email" />
-    </>
+    <Container>
+      <Form>
+        <SignInput title="id" content="email" margin="25px" />
+        <SignInput title="password" content="password" />
+        <SignButton type="submit" text="Login" />
+      </Form>
+    </Container>
   );
 }
 
-const NextButton = styled.button``;
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Form = styled.form``;
