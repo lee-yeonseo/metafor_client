@@ -1,12 +1,58 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
-import SearchBar from "./SearchBar";
 
 export default function Category() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const mainCategories = [
+    {
+      id: 1,
+      name: "호흡기계",
+      subCategories: [
+        {
+          id: 1,
+          name: "코, 인후 (상부 호흡기)",
+          subSubCategories: ["콧물", "코막힘", "인후통", "재채기", "후각 저하"],
+        },
+        {
+          id: 2,
+          name: "폐, 기관지 (하부 호흡기)",
+          subSubCategories: ["기침", "가래", "호흡 곤란"],
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "소화기계",
+      subCategories: [
+        {
+          id: 1,
+          name: "식도, 위상부 소화기 (상부 소화기)",
+          subSubCategories: [
+            "속쓰림",
+            "삼킴 곤란",
+            "구토",
+            "트림",
+            "복부 팽만감",
+          ],
+        },
+        {
+          id: 2,
+          name: "장, 항문하부 소화기 (하부 소화기)",
+          subSubCategories: ["복통", "설사", "변비", "혈변", "항문 통증"],
+        },
+      ],
+    },
+  ];
 
   const handleMenuClick = () => {
-    setIsMenuOpen((prev) => !prev);
+    setIsCategoryOpen(!isCategoryOpen);
+    setSelectedCategory(null);
+  };
+
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
   };
 
   return (
@@ -17,13 +63,30 @@ export default function Category() {
           <div />
           <div />
         </HamburgerMenu>
-        <SearchBar />
-        {isMenuOpen && (
-          <Options>
-            <p>옵션 1</p>
-            <p>옵션 2</p>
-            <p>옵션 3</p>
-          </Options>
+
+        {isCategoryOpen && (
+          <DropdownWrapper>
+            <CategoryList>
+              {mainCategories.map((category) => (
+                <CategoryItem
+                  key={category.id}
+                  onClick={() => handleCategoryClick(category.id)}
+                >
+                  {category.name}
+                </CategoryItem>
+              ))}
+            </CategoryList>
+
+            {selectedCategory && (
+              <SubCategoryList>
+                {mainCategories
+                  .find((cat) => cat.id === selectedCategory)
+                  .subCategories.map((sub) => (
+                    <SubCategoryItem key={sub.id}>{sub.name}</SubCategoryItem>
+                  ))}
+              </SubCategoryList>
+            )}
+          </DropdownWrapper>
         )}
       </Container>
     </PageWrapper>
@@ -39,14 +102,12 @@ const PageWrapper = styled.div`
   margin-top: 180px;
   background-color: #f0f0f0;
   padding-top: 250px;
+  padding-top: 0;
 `;
 
 const Container = styled.div`
   display: flex;
   align-items: center;
-  background-color: #1c1c1c;
-  border-radius: 14px;
-  padding: 10px 20px;
   position: relative;
 `;
 
@@ -61,13 +122,14 @@ const HamburgerMenu = styled.div`
   & > div {
     width: 30px;
     height: 2px;
-    background-color: white;
+    background-color: black;
   }
 `;
 
-const Options = styled.div`
+const DropdownWrapper = styled.div`
+  display: flex;
   position: absolute;
-  top: 70px;
+  top: 30px;
   left: 0;
   background-color: white;
   border: 1px solid #ddd;
@@ -75,4 +137,33 @@ const Options = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   z-index: 1;
+`;
+
+const CategoryList = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+`;
+
+const CategoryItem = styled.div`
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+
+const SubCategoryList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SubCategoryItem = styled.div`
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
 `;
