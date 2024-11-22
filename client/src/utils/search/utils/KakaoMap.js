@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import Bar from "./Bar";
+import styled from "@emotion/styled";
 
-export default function KakaoMap() {
+export default function KakaoMap({ setIsTime }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
   const [map, setMap] = useState(null);
@@ -8,6 +10,7 @@ export default function KakaoMap() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
+      setIsTime(true);
     }, 500);
 
     return () => clearTimeout(timer);
@@ -63,19 +66,24 @@ export default function KakaoMap() {
 
   return (
     <>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="장소를 검색하세요"
+      <Wrapper>
+        <Bar
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="장소를 
+        검색하세요"
+        />
+      </Wrapper>
+      <div
+        id="map"
         style={{
-          margin: "10px",
-          padding: "10px",
-          width: "300px",
-          fontSize: "16px",
+          width: "860px",
+          height: "507px",
+          border: "1px solid black",
+          borderRadius: "14px",
+          marginTop: "50px",
         }}
-      />
-      <div id="map" style={{ width: "500px", height: "400px" }}></div>
+      ></div>
       <script
         type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f736fc6b7ff09b784d9cb8d9ac1bed76&libraries=services"
@@ -83,3 +91,12 @@ export default function KakaoMap() {
     </>
   );
 }
+
+const Wrapper = styled.div`
+  width: 100%;
+  background-color: #1c1c1c;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  height: 80px;
+`;

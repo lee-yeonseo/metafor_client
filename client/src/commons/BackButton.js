@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
-export default function BackButton() {
+export default function BackButton({ route = "" }) {
   const router = useRouter();
   const onClickBack = () => {
-    router.push("/");
+    router.push(`/${route}`);
   };
   return (
     <Container>
