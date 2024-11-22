@@ -1,95 +1,79 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
+import Cate01 from "./Categ01";
 
-export default function Category() {
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
-  const mainCategories = [
-    {
-      id: 1,
-      name: "호흡기계",
-      subCategories: [
-        {
-          id: 1,
-          name: "코, 인후 (상부 호흡기)",
-          subSubCategories: ["콧물", "코막힘", "인후통", "재채기", "후각 저하"],
-        },
-        {
-          id: 2,
-          name: "폐, 기관지 (하부 호흡기)",
-          subSubCategories: ["기침", "가래", "호흡 곤란"],
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "소화기계",
-      subCategories: [
-        {
-          id: 1,
-          name: "식도, 위상부 소화기 (상부 소화기)",
-          subSubCategories: [
-            "속쓰림",
-            "삼킴 곤란",
-            "구토",
-            "트림",
-            "복부 팽만감",
-          ],
-        },
-        {
-          id: 2,
-          name: "장, 항문하부 소화기 (하부 소화기)",
-          subSubCategories: ["복통", "설사", "변비", "혈변", "항문 통증"],
-        },
-      ],
-    },
-  ];
-
-  const handleMenuClick = () => {
-    setIsCategoryOpen(!isCategoryOpen);
-    setSelectedCategory(null);
-  };
-
-  const handleCategoryClick = (categoryId) => {
-    setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
-  };
+export default function Category({ setIsHover }) {
+  const [isHover1, setIsHover1] = useState(false);
+  const [isHover2, setIsHover2] = useState(false);
+  const [isHover3, setIsHover3] = useState(false);
+  const [isHover4, setIsHover4] = useState(false);
 
   return (
-    <PageWrapper>
-      <Container>
-        <HamburgerMenu onClick={handleMenuClick}>
-          <div />
-          <div />
-          <div />
-        </HamburgerMenu>
+    <Container onMouseLeave={() => setIsHover(false)}>
+      {isHover1 && (
+        <Cate01 setIsHover1={setIsHover1} text1="코, 인후" text2="폐, 기관지" />
+      )}
+      <Cate
+        onMouseEnter={() => {
+          setIsHover1(true);
+          setIsHover2(false);
+          setIsHover3(false);
+          setIsHover4(false);
+        }}
+      >
+        호흡기계
+      </Cate>
+      {isHover2 && (
+        <Cate01
+          setIsHover1={setIsHover1}
+          text1="식도, 위상부소화기"
+          text2="장, 항문하부소화기"
+        />
+      )}
+      <Cate
+        onMouseEnter={() => {
+          setIsHover1(false);
+          setIsHover2(true);
+          setIsHover3(false);
+          setIsHover4(false);
+        }}
+      >
+        소화기계
+      </Cate>
 
-        {isCategoryOpen && (
-          <DropdownWrapper>
-            <CategoryList>
-              {mainCategories.map((category) => (
-                <CategoryItem
-                  key={category.id}
-                  onClick={() => handleCategoryClick(category.id)}
-                >
-                  {category.name}
-                </CategoryItem>
-              ))}
-            </CategoryList>
+      {isHover3 && (
+        <Cate01
+          setIsHover1={setIsHover1}
+          text1="팔다리 저림, 감각 이상"
+          text2="두통, 경련"
+        />
+      )}
 
-            {selectedCategory && (
-              <SubCategoryList>
-                {mainCategories
-                  .find((cat) => cat.id === selectedCategory)
-                  .subCategories.map((sub) => (
-                    <SubCategoryItem key={sub.id}>{sub.name}</SubCategoryItem>
-                  ))}
-              </SubCategoryList>
-            )}
-          </DropdownWrapper>
-        )}
-      </Container>
-    </PageWrapper>
+      <Cate
+        onMouseEnter={() => {
+          setIsHover1(false);
+          setIsHover2(false);
+          setIsHover3(true);
+          setIsHover4(false);
+        }}
+      >
+        신경계
+      </Cate>
+
+      {isHover4 && (
+        <Cate01 setIsHover1={setIsHover1} text1="피부, 머리카락, 손/발톱" />
+      )}
+      <Cate
+        onMouseEnter={() => {
+          setIsHover1(false);
+          setIsHover2(false);
+          setIsHover3(false);
+          setIsHover4(true);
+        }}
+      >
+        피부/외형
+      </Cate>
+    </Container>
   );
 }
 
@@ -106,64 +90,23 @@ const PageWrapper = styled.div`
 `;
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
-const HamburgerMenu = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 24px;
-  margin-right: 16px;
-
-  & > div {
-    width: 30px;
-    height: 2px;
-    background-color: black;
-  }
-`;
-
-const DropdownWrapper = styled.div`
-  display: flex;
+  width: 200px;
+  background-color: black;
+  color: white;
   position: absolute;
-  top: 30px;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  margin-right: 410px;
+  margin-bottom: 40px;
   z-index: 1;
+  padding: 15px;
+  border-radius: 10px;
+  opacity: 0.8;
 `;
 
-const CategoryList = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-`;
-
-const CategoryItem = styled.div`
+const Cate = styled.div`
   padding: 10px;
-  cursor: pointer;
-
   &:hover {
-    background-color: #f0f0f0;
-  }
-`;
-
-const SubCategoryList = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const SubCategoryItem = styled.div`
-  padding: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #f0f0f0;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
   }
 `;

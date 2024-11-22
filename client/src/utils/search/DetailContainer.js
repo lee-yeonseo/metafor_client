@@ -15,7 +15,7 @@ export default function DetailContainer() {
         style={{ width: "100px", height: "100px", marginBottom: "25px" }}
       />
       <Bar
-        value={search}
+        value="뇌졸증"
         onChange={(e) => {
           setSearch(e.target.value);
         }}

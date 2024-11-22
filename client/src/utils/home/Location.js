@@ -2,31 +2,20 @@ import styled from "@emotion/styled";
 
 export default function Location() {
   return (
-    <PageWrapper>
-      <Container>
-        <Title>Let’s find things happen</Title>
-        <ContentWrapper>
-          <Text>
-            위치를 입력하고 가장 가까운 병원 / 약국의 정보를 받아보세요!
-          </Text>
-          <Map src="/images/map.png" alt="map" />
-        </ContentWrapper>
-        <ButtonWrapper>
-          <Button>위치 입력하기</Button>
-        </ButtonWrapper>
-      </Container>
-    </PageWrapper>
+    <Container>
+      <Title>Let’s find things happen</Title>
+      <ContentWrapper>
+        <Text>
+          위치를 입력하고 가장 가까운 병원 / 약국의 정보를 받아보세요!
+        </Text>
+        <Map src="/images/map.png" alt="map" />
+      </ContentWrapper>
+      <ButtonWrapper>
+        <Button>위치 입력하기</Button>
+      </ButtonWrapper>
+    </Container>
   );
 }
-
-const PageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-  width: 100vw;
-  margin-top: -80px;
-`;
 
 const Container = styled.div`
   display: flex;

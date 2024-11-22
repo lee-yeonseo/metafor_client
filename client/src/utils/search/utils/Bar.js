@@ -1,12 +1,19 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 export default function Bar({ onChange, value, placeholder }) {
+  const router = useRouter();
   return (
     <>
       <Container>
         <SearchBarWrapper>
           <Input placeholder={placeholder} onChange={onChange} value={value} />
-          <SearchIcon src="/images/searchIcon.png" />
+          <SearchIcon
+            src="/images/searchIcon.png"
+            onClick={() => {
+              router.push("/search");
+            }}
+          />
         </SearchBarWrapper>
       </Container>
     </>

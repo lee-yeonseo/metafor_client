@@ -10,10 +10,10 @@ export default function KakaoMap({ setIsTime }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearchTerm(searchTerm);
-      setIsTime(true);
     }, 500);
-
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [searchTerm]);
 
   useEffect(() => {
@@ -55,6 +55,7 @@ export default function KakaoMap({ setIsTime }) {
           });
 
           map.setCenter(position);
+          setIsTime(true);
         } else {
           alert("검색된 장소가 없습니다.");
         }

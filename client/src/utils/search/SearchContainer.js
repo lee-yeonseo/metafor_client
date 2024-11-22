@@ -5,7 +5,7 @@ import { useState } from "react";
 import BackButton from "../../commons/BackButton";
 
 export default function SearchContainer() {
-  const router = useRouter("/");
+  const router = useRouter();
   const [search, setSearch] = useState("");
   const onClickDetail = () => {
     router.push("/search/detail");
@@ -19,7 +19,7 @@ export default function SearchContainer() {
         style={{ width: "100px", height: "100px", marginBottom: "25px" }}
       />
       <Bar
-        value={search}
+        value="뇌졸증"
         onChange={(e) => {
           setSearch(e.target.value);
         }}
