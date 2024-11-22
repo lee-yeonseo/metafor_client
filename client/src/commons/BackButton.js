@@ -8,12 +8,15 @@ export default function BackButton() {
   };
   return (
     <Container>
-      <Img src="backButton.png" onClick={onClickBack} />
+      <Img src="/images/backButton.png" onClick={onClickBack} />
     </Container>
   );
 }
 
 const Container = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 80px;
   display: flex;
