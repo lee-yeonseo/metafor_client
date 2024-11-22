@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useStore } from "../../commons/store";
 import SignInput from "./utils/SignInput";
 import SignButton from "./utils/SignButton";
 import BackButton from "../../commons/BackButton";
@@ -11,6 +12,7 @@ export default function SignUpContainer() {
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [error, setError] = useState("");
+  const { setName } = useStore();
 
   const onClickCreate = () => {
     if (!id) {
@@ -20,6 +22,7 @@ export default function SignUpContainer() {
     } else if (password !== passwordCheck) {
       setError("Passwords do not match.");
     } else {
+      setName(id);
       router.push("/");
     }
   };
