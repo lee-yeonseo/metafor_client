@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-
-import Category from "../../src/utils/home/search/Category";
-import Location from "../../src/utils/home/Location";
+import Category from "../../../src/utils/home/search/Category";
+import Location from "../../../src/utils/home/search/Location";
 
 export default function HomePage() {
   return (
@@ -11,6 +10,7 @@ export default function HomePage() {
       </LogoWrapper>
       <Category />
       <Location />
+      {/* 원격 저장소에서 추가된 내용 통합 */}
     </PageWrapper>
   );
 }
@@ -29,15 +29,11 @@ const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 13px;
-  left: 670px;
-  width: 100px;
-  height: 100px;
+  margin-bottom: 20px;
 `;
 
 const Logo = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 120px;
+  height: auto;
   object-fit: cover;
 `;
