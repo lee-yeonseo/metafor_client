@@ -1,84 +1,76 @@
 import styled from "@emotion/styled";
+import { useState } from "react";
+import Bar from "../../../src/utils/search/utils/Bar";
 
-import Category from "../../../src/utils/home/search/Category";
 import Article from "../../../src/utils/home/Article";
 import Location from "../../../src/utils/home/Location";
+import Category from "../../../src/utils/home/search/Category";
 import MemberComponent from "../../../src/utils/home/member/MemberComponent";
 
 export default function HomePage() {
+  const [search, setSearch] = useState("");
+  const [isHover, setIsHover] = useState(false);
+
   return (
-    <PageWrapper>
-      <LogoWrapper>
-        <Logo src="../../public/images/logo.png" />
-      </LogoWrapper>
-      <Category />
-      <ContentWrapper>
-        <ArticleWrapper>
-          <Article />
-        </ArticleWrapper>
-        <LocationWrapper>
-          <Location />
-        </LocationWrapper>
-        <MemberWrapper>
-          <MemberComponent />
-        </MemberWrapper>
-      </ContentWrapper>
-    </PageWrapper>
+    <Container>
+      <img
+        src="/images/logo.png"
+        style={{ width: "100px", height: "100px", marginBottom: "25px" }}
+      />
+      <CategoryContainer>
+        <CategoryButton onMouseEnter={() => setIsHover(true)}>
+          Category
+        </CategoryButton>
+        <Bar
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          placeholder="질병을 입력하세요."
+        />
+      </CategoryContainer>
+      {isHover && <Category setIsHover={setIsHover} />}
+      <MainContainer>
+        <Article />
+        <Location />
+        <MemberComponent />
+      </MainContainer>
+    </Container>
   );
 }
 
-const PageWrapper = styled.div`
+const Container = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #eeebe2;
-  padding-top: 40px;
-`;
-
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
   justify-content: center;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 100px;
 `;
 
-const Logo = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const ContentWrapper = styled.div`
+const MainContainer = styled.div`
   display: flex;
+  margin-top: 30px;
+  width: 90%;
   justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  margin-top: 100px;
-  gap: 20px;
 `;
-
-const ArticleWrapper = styled.div`
-  flex: 1;
+const CategoryContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 `;
 
-const LocationWrapper = styled.div`
-  flex: 1;
+const CategoryButton = styled.div`
+  height: 50px;
+  background-color: black;
+  color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
-`;
-
-const MemberWrapper = styled.div`
-  flex: 1;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  margin-right: 10px;
+  padding: 15px;
+  border-radius: 14px;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
+  }
 `;

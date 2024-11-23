@@ -19,7 +19,7 @@ export default function SearchContainer() {
         style={{ width: "100px", height: "100px", marginBottom: "25px" }}
       />
       <Bar
-        value="뇌졸증"
+        value="속쓰림"
         onChange={(e) => {
           setSearch(e.target.value);
         }}
@@ -27,44 +27,36 @@ export default function SearchContainer() {
       <MainContainer>
         <ConsultContainer>
           <Consult onClick={onClickDetail}>
-            <ConsultTitle>01 Consultation</ConsultTitle>
+            <ConsultTitle>역류성 식도염</ConsultTitle>
             <hr />
             <ConsultDescription>
-              During the initial consultation, we will discuss your business
-              goals and objectives, target audience, and current marketing
-              efforts. This will allow us to understand your needs and tailor
-              our services to best fit your requirements.
+              증상 : 속쓰림, 역류, 심장 통증
             </ConsultDescription>
           </Consult>
           <Consult onClick={onClickDetail}>
-            <ConsultTitle>02 Consultation</ConsultTitle>
+            <ConsultTitle>스트레스성 위염</ConsultTitle>
             <hr />
             <ConsultDescription>
-              During the initial consultation, we will discuss your business
-              goals and objectives, target audience, and current marketing
-              efforts. This will allow us to understand your needs and tailor
-              our services to best fit your requirements.
+              증상 : 속쓰림, 소화불량, 명치끝 통증, 경련, 복부 팽만감
             </ConsultDescription>
           </Consult>
           <Consult onClick={onClickDetail}>
-            <ConsultTitle>03 Consultation</ConsultTitle>
+            <ConsultTitle>위궤양</ConsultTitle>
             <hr />
             <ConsultDescription>
-              During the initial consultation, we will discuss your business
-              goals and objectives, target audience, and current marketing
-              efforts. This will allow us to understand your needs and tailor
-              our services to best fit your requirements.
+              증상 : 속쓰림, 식욕 감퇴, 소화 불량, 상복부 팽만감, 오심, 구토,
+              체중 감소, 메스꺼움
             </ConsultDescription>
           </Consult>
         </ConsultContainer>
         <PopularContainer>
           <PopularText>실시간 인기 검색어</PopularText>
           <PopularBox>
-            <Lank>01 뇌졸증</Lank>
-            <Lank>02 뇌졸증</Lank>
-            <Lank>03 뇌졸증</Lank>
-            <Lank>04 뇌졸증</Lank>
-            <Lank>05 뇌졸증</Lank>
+            <Lank>01 만성피로</Lank>
+            <Lank>02 건조한 눈</Lank>
+            <Lank>03 굽은 목</Lank>
+            <Lank>04 어깨 결림</Lank>
+            <Lank>05 허리 통증</Lank>
           </PopularBox>
         </PopularContainer>
       </MainContainer>

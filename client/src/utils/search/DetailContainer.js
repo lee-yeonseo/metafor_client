@@ -15,7 +15,7 @@ export default function DetailContainer() {
         style={{ width: "100px", height: "100px", marginBottom: "25px" }}
       />
       <Bar
-        value="뇌졸증"
+        value="속쓰림"
         onChange={(e) => {
           setSearch(e.target.value);
         }}
@@ -64,16 +64,15 @@ export default function DetailContainer() {
               근처 병원 찾으러 가기
             </MapButton>
           </MapContainer>
-          <MedicineContainer></MedicineContainer>
         </ConsultContainer>
         <PopularContainer>
           <PopularText>실시간 인기 검색어</PopularText>
           <PopularBox>
-            <Lank>01 뇌졸증</Lank>
-            <Lank>02 뇌졸증</Lank>
-            <Lank>03 뇌졸증</Lank>
-            <Lank>04 뇌졸증</Lank>
-            <Lank>05 뇌졸증</Lank>
+            <Lank>01 만성 피로</Lank>
+            <Lank>02 건조한 눈</Lank>
+            <Lank>03 굽은 목</Lank>
+            <Lank>04 어깨 결림</Lank>
+            <Lank>05 허리 통증</Lank>
           </PopularBox>
         </PopularContainer>
       </MainContainer>
@@ -141,13 +140,6 @@ const MapButton = styled.button`
       transition: all.5s;
     }
   }
-`;
-const MedicineContainer = styled.div`
-  background-color: #d0efad;
-  width: 90%;
-  height: 100px;
-  border: 1.5px solid black;
-  border-radius: 14px;
 `;
 
 const PopularContainer = styled.div``;

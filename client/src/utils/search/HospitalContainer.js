@@ -19,21 +19,21 @@ export default function HospitalContainer() {
           <>
             <Hospital>
               <p style={{ fontWeight: "bold" }}>01</p>
-              <p style={{ fontWeight: "bold" }}>공덕병원</p>
-              <p>4.3점</p>
-              <p>거리 300M</p>
+              <p style={{ fontWeight: "bold" }}>인앤인내과의원</p>
+              <p>80점</p>
+              <p>거리 310m</p>
             </Hospital>
             <Hospital>
               <p style={{ fontWeight: "bold" }}>02</p>
-              <p style={{ fontWeight: "bold" }}>마포병원</p>
-              <p>4.0점</p>
-              <p>거리 400M</p>
+              <p style={{ fontWeight: "bold" }}>양대원내과의원</p>
+              <p>71점</p>
+              <p>거리 410m</p>
             </Hospital>
             <Hospital>
               <p style={{ fontWeight: "bold" }}>03</p>
-              <p style={{ fontWeight: "bold" }}>우리병원</p>
-              <p>4.3점</p>
-              <p>거리 500M</p>
+              <p style={{ fontWeight: "bold" }}>공덕 365 의원</p>
+              <p>60점</p>
+              <p>거리 30m</p>
             </Hospital>
           </>
         )}

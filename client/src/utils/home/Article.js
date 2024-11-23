@@ -5,11 +5,11 @@ export default function Article() {
     <PageWrapper>
       <Container>
         <TextWrapper>
-          <Text>Let’s make</Text>
-          <Text> things happen</Text>
+          <Text>20분만 자도 정신 번쩍하는 법?</Text>
+          <Text>커피 냅을 아시나요?</Text>
         </TextWrapper>
         <ArticleImageWrapper>
-          <ArticleImage src="/images/article.png" alt="article" />
+          <ArticleImage src="/images/article.jpeg" alt="article" />
         </ArticleImageWrapper>
       </Container>
     </PageWrapper>
@@ -40,8 +40,9 @@ const TextWrapper = styled.div`
 const Text = styled.p`
   padding-top: 0px;
   color: black;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
+  text-align: center;
 `;
 
 const ArticleImageWrapper = styled.div`
@@ -50,4 +51,6 @@ const ArticleImageWrapper = styled.div`
 
 const ArticleImage = styled.img`
   width: 230px;
+  height: 280px;
+  border-radius: 10px;
 `;

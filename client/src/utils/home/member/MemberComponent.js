@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import SignButton from "../SignIn/SignButton";
-import Favorites from "./Favorites";
 import { useRouter } from "next/router";
 
 export default function MemberComponent() {

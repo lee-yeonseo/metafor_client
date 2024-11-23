@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 export default function Location() {
+  const router = useRouter();
   return (
     <Container>
       <Title>Let’s find things happen</Title>
@@ -11,7 +13,9 @@ export default function Location() {
         <Map src="/images/map.png" alt="map" />
       </ContentWrapper>
       <ButtonWrapper>
-        <Button>위치 입력하기</Button>
+        <Button onClick={() => router.push("../search/map/hospital")}>
+          위치 입력하기
+        </Button>
       </ButtonWrapper>
     </Container>
   );

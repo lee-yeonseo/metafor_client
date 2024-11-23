@@ -12,6 +12,10 @@ export default function SignInComponent() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onClickCreate = async () => {
+    if (id === "META:FOR") {
+      router.push("/login/member");
+      return;
+    }
     try {
       const response = await axios.post("/api/login", {
         id,
