@@ -16,7 +16,15 @@ export default function SearchContainer() {
       <BackButton />
       <img
         src="/images/logo.png"
-        style={{ width: "100px", height: "100px", marginBottom: "25px" }}
+        style={{
+          width: "100px",
+          height: "100px",
+          marginBottom: "25px",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          router.push("/");
+        }}
       />
       <Bar
         value="속쓰림"

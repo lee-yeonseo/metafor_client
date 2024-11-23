@@ -9,7 +9,7 @@ export default function Article() {
           <Text>커피 냅을 아시나요?</Text>
         </TextWrapper>
         <ArticleImageWrapper>
-          <ArticleImage src="/images/article.jpeg" alt="article" />
+          <ArticleImage src="/images/article.jpg" alt="article" />
         </ArticleImageWrapper>
       </Container>
     </PageWrapper>
