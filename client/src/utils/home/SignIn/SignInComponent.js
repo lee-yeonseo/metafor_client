@@ -12,7 +12,7 @@ export default function SignInComponent() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onClickCreate = async () => {
-    if (id === "META:FOR") {
+    if (id === "META:FOR" || id === "meta:for") {
       router.push("/login/member");
       return;
     }
